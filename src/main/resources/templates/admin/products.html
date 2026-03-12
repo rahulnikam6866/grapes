@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 220px;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            margin: 5px 0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: block;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #495057;
+            text-decoration: none;
+        }
+
+        /* Main content with sidebar margin */
+        .main-content {
+            margin-left: 220px; /* same as sidebar width */
+            padding: 20px;
+        }
+
+        /* Table adjustments */
+        .table thead {
+            background-color: #f8f9fa;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        /* Add product button spacing */
+        .btn-add-product {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Admin Panel</h4>
+        <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+        <a class="nav-link" href="/admin/products">Products</a>
+        <a class="nav-link" href="/admin/users">Users</a>
+        <a class="nav-link" href="/admin/orders">Orders</a>
+         <a class="nav-link" href="/admin/payments">Payments</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <h2>Products</h2>
+
+        <a th:href="@{/admin/add-product}" class="btn btn-primary btn-add-product">Add New Product</a>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}"></td>
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.description}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.stock}"></td>
+                    <td>
+                        <a th:href="@{'/admin/products/edit/' + ${product.id}}" class="btn btn-sm btn-warning">Edit</a>
+                        <a th:href="@{'/admin/products/delete/' + ${product.id}}" 
+                           class="btn btn-sm btn-danger" 
+                           onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(products)}">
+                    <td colspan="6" class="text-center">No products available.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

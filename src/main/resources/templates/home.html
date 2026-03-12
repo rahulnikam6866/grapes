@@ -1,0 +1,384 @@
+<!DOCTYPE html> <html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <head>
+  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   <title>द्राक्ष बागायतदार!!!</title> 
+   <!-- Font Awesome --> 
+   <script src="https://kit.fontawesome.com/a4e5aeac88.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+      </head> 
+      <body> 
+      <!-- Navbar --> 
+      <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top "> 
+      <a class="navbar-brand d-flex align-items-center" href="#"> 
+      <img th:src="@{/images/grapes-bunch.png}" width="80" height="80" class="bg-success mr-3 rounded-circle"> 
+      <h4 class="mb-0 font-weight-bold">द्राक्ष बागायतदार!!!</h4> </a> 
+      <!-- Toggle button for mobile view --> 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" 
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation"> 
+      <span class="navbar-toggler-icon"></span>
+       </button> 
+       <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+         <ul class="navbar-nav ml-auto"> 
+         <li class="nav-item active mx-3"> 
+         <a class="nav-link font-weight-bold h5" href="#showcase">Home <span class="sr-only">(current)</span></a>
+          </li> 
+          <li class="nav-item active mx-3"> 
+          <a class="nav-link font-weight-bold h5" href="#Home">About</a>
+           </li> 
+           <li class="nav-item active mx-3" style="cursor: pointer;">
+            <a class="nav-link  font-weight-bold h5" href="#Products" tabindex="-1" aria-disabled="true">Products</a> 
+            </li> 
+            <li class="nav-item active mx-3" style="cursor: pointer;">
+             <a class="nav-link  font-weight-bold h5" href="#support" tabindex="-1" aria-disabled="true">Support</a> 
+             </li> 
+              <li class="nav-item active mx-3 mt-2"> 
+              <a href="/logout" class="text-danger font-weight-bold h5 " >Logout</a> 
+              </li>
+              <li class="nav-item active mx-3 mt-2"> 
+              <a href="/cart" class="font-weight-bold h5 text-dark">View Cart</a>  
+            </li>
+ <li class="nav-item active mx-3 mt-2">
+<a href="/order-history" class="font-weight-bold h5 text-dark"> View Order History</a>
+</li>
+               </ul>
+               
+               <!-- Search form --> 
+              <!--  <form class="form-inline my-2 my-lg-0 ml-lg-3"> 
+               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> 
+               <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> Search <i class="fa-solid fa-magnifying-glass"></i>
+                </button> 
+                </form> -->
+                 </div> 
+                 </nav> 
+                 <section id="showcase" style="scroll-margin-top:90px;" > 
+                 <div class="container-fluid "> 
+                 <div class="row justify-content-center"> 
+                 <div class="jumbotron" th:style="|background-image: url('images/arra.jpg'); background-size: 100% 100%;color: white; height: 600px;width: 100%;|"> 
+                 <strong> <h1 class="display-3 text-light">Welcome to <strong>द्राक्ष बागायतदार!!!</strong></h1> 
+                 <p class="lead mt-5">Your one-stop shop for the <br> finest grapes and grape products.</p> 
+                 <p class="mt-5">Explore our wide range of <br> fresh grapes, juices, and wines.</p> 
+                 <a class="btn btn-outline-light btn-lg mt-3" href="#" role="button">Learn more</a> 
+                 </strong>
+                  </div>
+                   </div> 
+                   </div>
+                    </section>
+                    
+                     <section id="Home" style="background-color: beige;scroll-margin-top:100px;">
+                      <div class="container"> 
+                      <div class="row">
+                       <div class="col-lg-4 text-center">
+                        <h1 class="mt-3 display-3 "></h1> 
+                        <strong> <h3> द्राक्ष बागायतदार हे एक अग्रगण्य द्राक्ष उत्पादक कंपनी आहे जी उत्कृष्ट दर्जाच्या द्राक्षांच्या उत्पादनासाठी समर्पित आहे. 
+                        आमच्या द्राक्ष बागांमध्ये, आम्ही परंपरागत शेती पद्धती आणि आधुनिक तंत्रज्ञान यांचा संगम करून उत्कृष्ट द्राक्षांची लागवड करतो.
+                         आमचे ध्येय केवळ उत्कृष्ट द्राक्षे उत्पादन करणे नाही, तर पर्यावरणपूरक आणि शाश्वत शेती पद्धतींचा अवलंब करणे देखील आहे. </h3> 
+                         </strong> 
+                         </div> 
+                         <div class="col-lg-8 text-center" >
+ <img th:src="@{images/girl-holding-grapes.jpg}" alt="" class="img container" style="border-radius: 20px;
+  height: 500px; width: 900px;background-size: 100% 100%;"> 
+  </div> 
+  </div> 
+  </div> 
+  </section> 
+  
+  <section id="Products" class="my-5" style="scroll-margin-top:100px;">
+   <div class="container">
+    <div class="row text-center">
+     <div class="col"> 
+     <h1 class="display-4 font-weight-bold">Our Products</h1> 
+     <p class="lead">Discover our range of premium grapes </p>
+      </div> 
+      </div>
+       <div class="row text-center">
+        <!-- Product 1 -->
+         <div class="col-md-4 my-3">
+          <div class="card h-100">
+           <img src="/images/Raisins.jpg" class="card-img-top" alt="Grape Juice">
+            <div class="card-body">
+             <h5 class="card-title font-weight-bold">Rasins</h5>
+              <p class="card-text">Freshly Made and Naturally Sundried Rasins.100% Gurented</p>
+<h5><strong>₹450</strong></h5>
+
+<form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="Rasins"/>
+    <input type="hidden" name="price" value="450"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>
+
+               </div>
+                </div>
+                 </div> 
+                 <!-- Product 2 -->
+                  <div class="col-md-4 my-3"> 
+                  <div class="card h-100"> 
+                  <img src="/images/wine.jpg" class="card-img-top" alt="Grape Wine"> 
+                  <div class="card-body"> <h5 class="card-title font-weight-bold">Grape Wine</h5>
+                   <p class="card-text">Exquisite wines crafted from premium grapes.</p> 
+                   <h5><strong>₹650</strong></h5>
+    
+     <form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="Grape Wine"/>
+    <input type="hidden" name="price" value="650"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>        
+ </div>
+ </div> 
+  </div>
+  <!-- Product 3 -->
+  <div class="col-md-4 my-3"> 
+  <div class="card h-100"> 
+  <img src="/images/Thompson.jpg" class="card-img-top" alt="Fresh Grapes"> 
+  <div class="card-body">
+   <h5 class="card-title font-weight-bold">Thompson Seedless</h5>
+    <p class="card-text">Juicy and sweet farm-fresh grapes.</p>
+     <h5><strong>₹120/kg</strong></h5> 
+     
+   <form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="Thompson Seedless"/>
+    <input type="hidden" name="price" value="120"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>
+
+      </div>
+       </div>
+        </div> 
+        <!-- Product 4 --> 
+        <div class="col-md-4 my-3"> 
+        <div class="card h-100"> 
+        <img src="/images/Anushka.jpg" class="card-img-top" alt="Organic Grapes">
+         <div class="card-body">
+          <h5 class="card-title font-weight-bold">RK Sonaka</h5>
+           <p class="card-text">100% organic grapes grown naturally.</p> 
+           <h5><strong>₹150/kg</strong></h5>
+   
+         <form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="RK Sonaka"/>
+    <input type="hidden" name="price" value="150"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>
+
+           </div> 
+           </div> 
+           </div> 
+           <!-- Product 5 --> 
+           <div class="col-md-4 my-3"> 
+           <div class="card h-100"> 
+           <img src="/images/blackgrapes.jpg" class="card-img-top" alt="Seedless Grapes"> 
+           <div class="card-body"> <h5 class="card-title font-weight-bold">Black Purpel</h5>
+            <p class="card-text">Sweet seedless grapes perfect for kids.</p> 
+            <h5><strong>₹180/kg</strong></h5> 
+<form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="Black Purpel"/>
+    <input type="hidden" name="price" value="180"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>
+            </div>
+             </div> 
+             </div>
+              <!-- Product 6 -->
+               <div class="col-md-4 my-3"> 
+               <div class="card h-100"> 
+               <img src="/images/Rallies.jpg" class="card-img-top" alt="Premium Grapes">
+                <div class="card-body">
+                 <h5 class="card-title font-weight-bold">Rallies Seedless</h5>
+                  <p class="card-text">Hand-picked premium quality export grapes.</p> 
+                  <h5><strong>₹220/kg</strong></h5>
+                  
+<form th:action="@{/add-to-cart}" method="post">
+
+    <input type="hidden" name="productName" value="Rallies Seedless"/>
+    <input type="hidden" name="price" value="450"/>
+
+    Quantity:
+    <input type="number" name="quantity"
+           value="1" min="1" style="width:60px"/>
+
+    <button type="submit" class="btn btn-success">
+        Add to Cart
+    </button>
+
+</form>            
+  </div>
+ </div>
+</div>
+  </div> 
+ </div> 
+ </section>
+                      
+      
+ <section id="why-us" class="py-5 bg-muted" style="background-color: beige;"> 
+ <div class="container text-center"> 
+ <h2 class="font-weight-bold mb-4">Why Choose Us?</h2>
+  <div class="row"> 
+  <div class="col-md-3">
+   <i class="fa-solid fa-leaf fa-3x text-success"></i>
+    <h5 class="mt-3">100% Organic</h5>
+     </div> <div class="col-md-3"> 
+     <i class="fa-solid fa-truck fa-3x text-primary"></i> 
+     <h5 class="mt-3">Fast Delivery</h5> 
+     </div> 
+     <div class="col-md-3"> 
+     <i class="fa-solid fa-handshake fa-3x text-warning"></i> 
+     <h5 class="mt-3">Trusted Farmers</h5>
+      </div> 
+      <div class="col-md-3"> 
+      <i class="fa-solid fa-award fa-3x text-danger"></i> 
+      <h5 class="mt-3">Premium Quality</h5> 
+      </div> 
+      </div> 
+      </div> 
+      </section> 
+      
+      <section id="testimonials" class="py-5 bg-light">
+       <div class="container text-center"> 
+       <h2 class="font-weight-bold mb-4">What Our Customers Say</h2> 
+       <div class="row"> 
+       <div class="col-md-4"> 
+       <div class="card shadow-sm p-3"> ⭐⭐⭐⭐⭐ <p>Fresh grapes and quick delivery!</p>
+        <strong>- Rahul, Nashik</strong>
+         </div> 
+         </div> 
+         <div class="col-md-4"> 
+         <div class="card shadow-sm p-3"> ⭐⭐⭐⭐⭐ <p>Best quality I’ve ever tasted.</p> 
+         <strong>- Danyeshwar, Pune</strong> 
+         </div>
+          </div> 
+          <div class="col-md-4">
+           <div class="card shadow-sm p-3"> ⭐⭐⭐⭐⭐ <p>Direct from farmer – love it!</p>
+            <strong>- Sumit, Mumbai</strong>
+             </div> 
+             </div> 
+             </div> 
+             </div>
+              </section> 
+              
+              <section id="support" class="py-5 " style="background-color:#fff8e1;scroll-margin-top:90px;">" > 
+              <div class="container"> 
+              <!-- Heading -->
+               <div class="row text-center mb-4">
+                <div class="col">
+                 <h1 class="display-4 font-weight-bold">Support & Guidance</h1>
+                  <p class="lead"> Expert help for grape buyers and growers 🍇 </p> 
+                  </div>
+                   </div> 
+                   <!-- Guidance Cards -->
+                    <div class="row text-center">
+                     <div class="col-md-4 mb-4">
+                      <div class="card shadow-sm h-100"> 
+                      <div class="card-body"> 
+                      <i class="fa-solid fa-seedling fa-3x text-success mb-3"></i> 
+                      <h5 class="font-weight-bold">Farming Guidance</h5> 
+                      <p> Learn best practices for grape cultivation, soil health, irrigation, and disease control. </p> 
+                      </div>
+                       </div> 
+                       </div> 
+                       <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm h-100">
+                         <div class="card-body">
+                          <i class="fa-solid fa-truck-fast fa-3x text-primary mb-3"></i>
+                           <h5 class="font-weight-bold">Order Support</h5>
+                            <p> Need help with orders, delivery, or product selection? Our support team is ready to assist you. </p>
+                             </div>
+                              </div>
+                               </div>
+                                <div class="col-md-4 mb-4">
+                                 <div class="card shadow-sm h-100">
+                                  <div class="card-body">
+                                   <i class="fa-solid fa-phone-volume fa-3x text-warning mb-3"></i>
+                                    <h5 class="font-weight-bold">Expert Consultation</h5> 
+                                    <p> Get direct advice from experienced grape farmers and agricultural experts. </p>
+                                     </div>
+                                      </div>
+                                       </div>
+                                        </div>
+ <!-- Call to Action -->
+<div class="row text-center mt-4">
+ <div class="col"> 
+ <a href="https://wa.me/919022275661?text=Hello%20I%20need%20support%20and%20guidance" target="_blank" class="btn btn-success btn-lg ml-2"> 
+ <i class="fa-brands fa-whatsapp"></i> WhatsApp Support </a>
+ <a href="tel:9373743804" class="btn btn-primary btn-lg ml-2">
+    <i class="fa-solid fa-phone"></i> Call Support
+</a>
+ 
+  </div>
+   </div>
+    </div>
+    </section>
+    
+     <section id="thank-you" class="py-5 text-center" style="background-color:#fff6a1;"> 
+     <div class="container"> 
+     <h1 class="display-4 font-weight-bold mb-3"> Thank You 🙏 </h1> 
+     <p class="lead mb-4"> Thank you for trusting <strong>द्राक्ष बागायतदार!!!</strong>.<br> 
+     We are grateful for your support and promise to deliver the freshest grapes with care and honesty 🍇 </p> 
+     <p class="h5"> Your trust motivates our farmers to grow better every day. </p> 
+     <div class="mt-4"> 
+     <i class="fa-solid fa-heart fa-2x text-danger"></i>
+      <i class="fa-solid fa-leaf fa-2x text-success mx-2"></i>
+       <i class="fa-solid fa-handshake fa-2x text-warning"></i> 
+       </div> 
+       </div> 
+       </section>
+        <footer class="bg-dark text-light text-center py-3">
+         <p class="mb-1"> © 2026 <strong>द्राक्ष बागायतदार!!!</strong> </p> 
+         <small> Fresh from farm • Trusted by customers • Made with ❤️ in Maharashtra . Developed By Rahul Nikam </small> 
+         </footer>
+         
+         
+ <!-- Bootstrap JS (required for navbar toggle) --> 
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" 
+ integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+ </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+  </script>
+   </body>
+    </html>

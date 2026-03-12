@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | द्राक्ष बागायतदार</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <style>
+        /* Full-page background */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .bg-main {
+            background-image: url('/images/login-img.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-main d-flex justify-content-center align-items-center min-vh-100 p-3">
+
+    <div class="bg-none bg-opacity-75 rounded-lg shadow-lg p-4 w-100" style="max-width: 380px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+
+        <!-- Logo + Title -->
+        <div class="d-flex align-items-center  mb-3">
+            <img th:src="@{/images/grapes-bunch.png}" width="80" height="80" class="mr-3 rounded-circle bg-light border border-2 border-dark ">
+            <h2 class="mb-0 font-weight-bold">Admin Panel</h2>
+        </div>
+
+        <p class="text-center mb-3"><strong>Login to your account</strong></p>
+
+        <!-- Admin Login Form -->
+        <form th:action="@{/admin/admin-login}" th:object="${admin}" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control rounded-pill" th:field="*{name}" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control rounded-pill" th:field="*{password}" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block rounded-pill font-weight-bold">Login</button>
+        </form>
+
+        <!-- Error message -->
+        <p class="text-danger text-center mt-2" th:text="${error}"></p>
+
+        <!-- Back to user login -->
+        <p class="text-center  mt-3">
+            <a href="/" class="text-decoration-none text-light">Back to User Login</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

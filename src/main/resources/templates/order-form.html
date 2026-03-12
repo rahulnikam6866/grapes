@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: url('/images/grapesrow.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #000;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border: 1px solid #28a745;
+        }
+
+        .summary-box {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            h2 {
+                font-size: 22px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .table th,
+            .table td {
+                font-size: 13px;
+            }
+
+            .summary-box {
+                text-align: left !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-md-6 {
+                padding: 0;
+            }
+
+            .card {
+                border-radius: 15px;
+            }
+
+            .btn-lg {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container py-5">
+<div class="row justify-content-center">
+<div class="col-lg-6 col-md-8 col-sm-12">
+
+<div class="card shadow-lg">
+<div class="card-body">
+
+<h2 class="text-center font-weight-bold mb-4">Order Details 🍇</h2>
+
+<form th:action="@{/order}" th:object="${order}" method="post">
+
+<div class="form-group">
+<label>Customer Name</label>
+<input type="text" class="form-control" th:field="*{customerName}" readonly>
+</div>
+
+<div class="form-group">
+<label>Mobile Number</label>
+<input type="text" class="form-control" th:field="*{mobile}" readonly>
+</div>
+<div class="form-group">
+<label>Delivery Address</label>
+<textarea class="form-control" th:field="*{address}" rows="3" required></textarea>
+</div>
+<div th:if="${cart != null}" class="mb-4">
+
+<h5 class="font-weight-bold text-center">Selected Products</h5>
+
+<div class="table-responsive">
+<table class="table table-bordered text-center bg-white">
+<thead class="bg-success text-white">
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Qty</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="item : ${cart}">
+<td th:text="${item.productName}"></td>
+<td>₹ <span th:text="${item.price}"></span></td>
+<td th:text="${item.quantity}"></td>
+<td>₹ <span th:text="${item.price * item.quantity}"></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="summary-box text-right font-weight-bold">
+
+<p>
+Subtotal: ₹ 
+<span th:text="${#numbers.formatDecimal(subtotal,1,2)}"></span>
+</p>
+
+<p>
+GST (5%): ₹ 
+<span th:text="${#numbers.formatDecimal(tax,1,2)}"></span>
+</p>
+
+<p>
+Shipping: ₹ 
+<span th:text="${#numbers.formatDecimal(shipping,1,2)}"></span>
+</p>
+
+<hr>
+
+<h5>
+Grand Total: ₹ 
+<span th:text="${#numbers.formatDecimal(grandTotal,1,2)}"></span>
+</h5>
+
+</div>
+
+</div>
+
+ <button type="submit" class="btn btn-success">
+        Place Order
+    </button>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const GST_RATE = 0.05;
+
+    const productPrices = {
+        "Rasins": 450,
+        "Grape Wine": 650,
+        "Thompson Seedless": 120,
+        "RK Sonaka": 150,
+        "Black Purpel": 180,
+        "Rallies Seedless": 220
+    };
+
+    function calculateAmount() {
+
+        const product = document.getElementById("productName")?.value;
+        const qty = parseFloat(document.getElementById("quantity")?.value);
+
+        const subtotalField = document.getElementById("subtotal");
+        const gstField = document.getElementById("gst");
+        const amountField = document.getElementById("amount");
+
+        if (!qty || qty <= 0 || !productPrices[product]) {
+            if(subtotalField) subtotalField.value = "";
+            if(gstField) gstField.value = "";
+            if(amountField) amountField.value = "";
+            return;
+        }
+
+        const subtotal = productPrices[product] * qty;
+        const gstAmount = subtotal * GST_RATE;
+        const finalAmount = subtotal + gstAmount;
+
+        if(subtotalField) subtotalField.value = subtotal.toFixed(2);
+        if(gstField) gstField.value = gstAmount.toFixed(2);
+        if(amountField) amountField.value = finalAmount.toFixed(2);
+    }
+
+    window.onload = calculateAmount;
+</script>
+
+</body>
+</html>
