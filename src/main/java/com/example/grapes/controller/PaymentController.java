@@ -52,8 +52,11 @@ public class PaymentController {
 	    if(lastOrder != null){
 
 	        lastOrder.setPaymentMethod(paymentMethod);
-	        lastOrder.setPaymentStatus("Paid");
-
+	        if(paymentMethod.equals("COD")){
+	            lastOrder.setPaymentStatus("Unpaid");
+	        } else {
+	            lastOrder.setPaymentStatus("Paid");
+	        }
 	        orderRepository.save(lastOrder);
 	    }
 

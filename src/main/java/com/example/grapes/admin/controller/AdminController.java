@@ -79,7 +79,7 @@ public class AdminController {
         return "admin/products";
     }
 
-    @GetMapping("/products/add")
+    @GetMapping("/add-product")
     public String addProductPage(Model model) {
         model.addAttribute("product", new Product());
         return "admin/add-product";
@@ -130,6 +130,9 @@ public class AdminController {
         if (optionalOrder.isPresent()) {
             Order order = optionalOrder.get();
             order.setStatus(status); // Set new status
+            if ("Delivered".equals(status) && "COD".equalsIgnoreCase(order.getPaymentMethod())) {
+                order.setPaymentStatus("Paid");
+            }
             orderRepository.save(order);
         }
 
